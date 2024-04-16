@@ -1,4 +1,40 @@
-import { useEffect, useState, useRef } from "react";
+import { useRef, useState } from "react"
+import BoxColor from './BoxColor'
+
+function MyForm() {
+  const inputRef = useRef(null);
+  const [value, setValue] = useState('')
+  const colors =['red', 'green', 'pink', 'yellow', 'purple', 'white', 'blue', 'aqua', 'olive']
+  
+  
+
+  return(
+    <>
+    <input
+      type="text"
+      placeholder="choose a color"
+      value={value}
+      ref={inputRef}
+      onChange={() => setValue(inputRef.current.value)}
+    />
+    <div className="container">
+      {colors.map((color, index) => {
+        return (<BoxColor key={index} color={color} value={value}/>)
+      })}
+    </div>
+
+    
+    </>
+  )
+}
+export default MyForm
+
+
+
+
+
+
+/*import { useEffect, useState, useRef } from "react";
 import '../App.css'
 import BoxColor from "./BoxColor";
 const colors = ['red', 'green', 'pink', 'yellow', 'purple', 'white', 'blue', 'aqua', 'olive'];
@@ -37,4 +73,4 @@ function MyForm() {
   );
 }
 
-export default MyForm;
+export default MyForm;*/
